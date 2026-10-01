@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: fct_fraud_features
+    description: >
+      Gold feature mart — one row per transaction with all ML features
+      (V1-V28, amount/time derived features) plus the fraud label.
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: class
+        description: 1 = fraudulent transaction, 0 = legitimate
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]

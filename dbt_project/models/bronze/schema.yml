@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: Raw credit card transactions (Time, V1-V28 PCA features, Amount, Class)
+    columns:
+      - name: transaction_id
+        description: Sequential row identifier assigned at ingestion
+        tests:
+          - unique
+          - not_null
+      - name: time
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: class
+        description: 1 = fraudulent transaction, 0 = legitimate
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]

@@ -1,0 +1,40 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+data/raw/transactions/creditcard.csv
+data/financial_anomaly.duckdb
+*.duckdb
+# All local databases stay out of future commits.
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+mlruns/
+mlruns.db
+*.egg-info/
+.pytest_cache/
+minikube-darwin-arm64
+
+# Large, fully-regenerable model/agent artifacts (rebuild via training scripts
+# / `python agents/fraud_agent.py --build-index`)
+models/xgboost/shap_values.parquet
+agents/chroma_store/
+
+# Personal datasets, secrets, and generated artifacts.
+# Already tracked files must be removed separately; these rules do not erase history.
+data/**
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+secrets*.json
+*.log
+models/**/*.joblib
+models/**/*.pt
+models/**/*.parquet
+models/model_registry.json
+demo_data.json
+results/
+reports/private/
